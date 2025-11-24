@@ -1,0 +1,20 @@
+.product-info-details {
+    margin-top: 2rem;
+}
+
+.info-title {
+    font-size: 1.2rem;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.info-list li {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
