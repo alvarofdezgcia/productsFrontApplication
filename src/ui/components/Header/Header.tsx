@@ -5,21 +5,19 @@ import Breadcrumbs from '../Breadcrumbs/Breadcrumbs';
 import './Header.css';
 
 const Header: React.FC = () => {
-    const { count } = useCart();
+  const { count } = useCart();
 
-    return (
-        <header className="header">
-            <div className="header-content">
-                <Link to="/" className="logo">
-                    Mobile Store
-                </Link>
-                <div className="cart-info">
-                    Cart: {count}
-                </div>
-            </div>
-            <Breadcrumbs />
-        </header>
-    );
+  return (
+    <header className="header">
+      <div className="header-content">
+        <Link to="/" className="logo">
+          Mobile Store
+        </Link>
+        <div className="cart-info">Cart: {count}</div>
+      </div>
+      <Breadcrumbs />
+    </header>
+  );
 };
 
 export default Header;

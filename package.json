@@ -1,7 +1,7 @@
 {
-  "name": "Front",
+  "name": "itx-frontend-test",
   "version": "1.0.0",
-  "description": "This repository contains a comprehensive set of development rules, standards, and AI agent configurations designed to work seamlessly with multiple AI coding copilots. The setup is portable and can be imported into any project to provide consistent, high-quality AI-assisted development.",
+  "description": "ITX Frontend Test - Mobile Store Application built with React, TypeScript, and Webpack following Hexagonal Architecture",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
@@ -32,9 +32,12 @@
     "css-loader": "^6.7.3",
     "cypress": "^12.1.0",
     "eslint": "^8.29.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.31.11",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.3.1",
+    "jest-environment-jsdom": "^29.3.1",
     "prettier": "^2.8.1",
     "style-loader": "^3.3.1",
     "ts-jest": "^29.0.3",

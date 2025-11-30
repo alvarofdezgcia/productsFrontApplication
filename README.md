@@ -1,125 +1,77 @@
 # ITX Frontend Test
 
-Mobile Store Application built with React, TypeScript, and Webpack.
+A modern Mobile Store Application built with **React**, **TypeScript**, and **Webpack**, following **Hexagonal Architecture** principles.
 
-## Features
-- Product List Page (PLP) with search and grid layout.
-- Product Details Page (PDP) with specifications and add-to-cart functionality.
-- Client-side caching (1 hour expiration).
-- Persistent cart count.
-- Responsive design.
+## 🚀 Features
 
-## Tech Stack
-- React 18
-- TypeScript
-- Webpack
-- Native CSS (No frameworks)
-- Jest + React Testing Library
-- Cypress
+- **Product List Page (PLP)**: Grid layout with search functionality and responsive design.
+- **Product Details Page (PDP)**: Detailed view with image, description, and add-to-cart options.
+- **Shopping Cart**: Persistent cart counter that accumulates items.
+- **Client-Side Caching**: 1-hour TTL cache for API requests to optimize performance.
+- **Responsive Design**: Optimized for mobile, tablet, and desktop views.
 
-## Architecture
+## 🛠️ Tech Stack
 
-The application follows **Hexagonal Architecture** (Ports & Adapters):
+- **Core**: React 18, TypeScript
+- **Build Tool**: Webpack 5 (configured from scratch)
+- **Styling**: Native CSS (no frameworks)
+- **State Management**: React Context + LocalStorage
+- **Testing**: Jest, React Testing Library, Cypress
+- **Architecture**: Hexagonal (Ports & Adapters)
+
+## 🏗️ Architecture
+
+The application implements **Hexagonal Architecture** to decouple business logic from the UI and infrastructure:
 
 ```
 src/
 ├── core/                            # Domain + Application layers (framework-agnostic)
-│   ├── product/
-│   │   ├── domain/
-│   │   │   ├── Product.ts           # Domain entities
-│   │   │   └── ProductRepository.ts # Repository interface (output port)
-│   │   ├── application/
-│   │   │   ├── GetProductList.ts    # Use case
-│   │   │   ├── GetProductDetail.ts  # Use case
-│   │   │   └── SearchProducts.ts    # Use case
-│   │   └── infrastructure/
-│   │       └── ApiProductRepository.ts  # Repository implementation (adapter)
-│   ├── cart/
-│   │   ├── domain/
-│   │   │   ├── Cart.ts              # Domain entities
-│   │   │   └── CartRepository.ts    # Repository interface (output port)
-│   │   ├── application/
-│   │   │   └── AddToCart.ts         # Use case
-│   │   └── infrastructure/
-│   │       └── ApiCartRepository.ts # Repository implementation (adapter)
-│   └── shared/
-│       └── infrastructure/
-│           └── LocalStorageCache.ts # Shared infrastructure
-├── features/                        # Feature-specific UI (input adapters)
-│   ├── product-list/
-│   │   ├── pages/
-│   │   │   └── ProductListPage.tsx
-│   │   ├── components/
-│   │   │   └── ProductItem.tsx
-│   │   └── hooks/
-│   │       └── useProducts.ts
-│   └── product-detail/
-│       ├── pages/
-│       │   └── ProductDetailPage.tsx
-│       ├── components/
-│       │   ├── ProductInfo.tsx
-│       │   └── ProductActions.tsx
-│       └── hooks/
-│           └── useProductDetail.ts
-├── ui/                              # Shared UI components
-│   ├── components/
-│   │   ├── Header/
-│   │   ├── Breadcrumbs/
-│   │   └── SearchBar/
-│   └── layout/
-│       └── MainLayout.tsx
-└── app/                             # Application setup
-    ├── context/
-    │   └── CartContext.tsx          # Global state management
-    ├── App.tsx                      # Router configuration
-    └── index.tsx                    # Entry point
+│   ├── product/                     # Product domain module
+│   ├── cart/                        # Cart domain module
+│   └── shared/                      # Shared kernel (e.g., Cache)
+├── features/                        # UI Feature modules (Adapters)
+│   ├── product-list/                # PLP components & hooks
+│   └── product-detail/              # PDP components & hooks
+├── ui/                              # Shared UI components (Atoms/Molecules)
+└── app/                             # Application composition root
 ```
 
-### Key Design Decisions
+## 📦 Installation
 
-- **Domain Layer**: Pure TypeScript with zero React dependencies, ensuring business logic is framework-agnostic
-- **Repository Pattern**: Abstracts data access through interfaces, enabling easy testing and swapping implementations
-- **Use Cases**: Business logic encapsulated in single-responsibility use case classes
-- **Client-Side Caching**: Implements 1-hour TTL cache using LocalStorage to reduce API calls and improve performance
-- **Graceful Degradation**: Returns user-friendly error messages when API calls fail
-- **Separation of Concerns**: Clear boundaries between domain logic, infrastructure, and UI layers
+Prerequisites: Node.js >= 14, npm >= 6
 
-## Prerequisites
-- Node.js >= 14
-- npm >= 6
-
-## Installation
 ```bash
+# Install dependencies
 npm install
 ```
 
-## Scripts
+## 📜 Scripts
 
-- **Start Development Server**:
-  ```bash
-  npm start
-  ```
-  Runs the app at `http://localhost:3000`.
+| Command | Description |
+|---------|-------------|
+| `npm start` | Starts the development server at `http://localhost:3000` |
+| `npm run build` | Builds the application for production to `dist/` |
+| `npm test` | Runs unit tests with Jest |
+| `npm run cypress:run` | Runs E2E tests with Cypress (requires app running) |
+| `npm run lint` | Runs ESLint to check code quality |
 
-- **Build for Production**:
-  ```bash
-  npm run build
-  ```
-  Outputs to `dist/`.
+## 🧪 Testing
 
-- **Run Unit Tests**:
-  ```bash
-  npm test
-  ```
+### Unit Tests
+Run the Jest test suite:
+```bash
+npm test
+```
 
-- **Run E2E Tests**:
-  ```bash
-  npm run cypress:open
-  # or
-  npm run cypress:run
-  ```
+### End-to-End Tests
+1. Start the application:
+   ```bash
+   npm start
+   ```
+2. In a separate terminal, run Cypress:
+   ```bash
+   npm run cypress:run
+   ```
 
-- **Lint Code**:
-  ```bash
-  npm run lint
-  ```
+## 📝 License
+ISC

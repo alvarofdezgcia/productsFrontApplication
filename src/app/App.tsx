@@ -7,18 +7,18 @@ import ProductDetailPage from '../features/product-detail/pages/ProductDetailPag
 import './App.css';
 
 const App: React.FC = () => {
-    return (
-        <CartProvider>
-            <Router>
-                <MainLayout>
-                    <Routes>
-                        <Route path="/" element={<ProductListPage />} />
-                        <Route path="/product/:id" element={<ProductDetailPage />} />
-                    </Routes>
-                </MainLayout>
-            </Router>
-        </CartProvider>
-    );
+  return (
+    <CartProvider>
+      <Router>
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<ProductListPage />} />
+            <Route path="/product/:id" element={<ProductDetailPage />} />
+          </Routes>
+        </MainLayout>
+      </Router>
+    </CartProvider>
+  );
 };
 
 export default App;
